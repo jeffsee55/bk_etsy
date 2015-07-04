@@ -1,0 +1,25 @@
+%header.navigation{:role => "banner"}
+  .navigation-wrapper
+    =link_to root_path, class: "logo" do
+      %img{:alt => "Logo Image", :src => "#{asset_path('bk-logo-dark.png')}"}
+      %span BOHOKITTY
+    %a#js-mobile-menu.navigation-menu-button{:href => "javascript:void(0)"} MENU
+    %nav{:role => "navigation"}
+      %ul#js-navigation-menu.navigation-menu.show
+        %li.nav-link
+          =link_to "About", about_path
+        %li.nav-link.more
+          %a{:href => "javascript:void(0)"} Collections
+          %ul.submenu
+            - if menu_sections.respond_to?('each')
+              - menu_sections.each do |section|
+                %li
+                  =link_to section.title, section_path(section.id)
+            - else
+              %li
+                =link_to menu_sections.title, section_path(menu_sections.id)
+        %li.nav-link
+          =link_to "Inspiration", inspiration_path
+        %li.nav-link
+          =link_to "Contact", contact_path
+

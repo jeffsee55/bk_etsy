@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/jeffsee/code/bk_etsy","disabled":false},"v-csc-1":{"id":"v-csc-1","guestpath":"/tmp/vagrant-chef/6ea4e9f385472feef68ccee58ccd2d3e/cookbooks","hostpath":"/Users/jeffsee/code/bk_etsy/cookbooks","disabled":false}}}

@@ -1,0 +1,14 @@
+.page-hero.contact-hero{style: "background: url(#{asset_path('bk-contact.jpg')}) center"}
+
+.page-wrapper
+  .container.page-container
+    .page-image
+      %img{src: "#{asset_path('bk-contact-page.jpg')}"}
+    .page-content
+      %h3 Contact Us
+      %hr
+      If you have any questions please don't hestitate to ask. We want to ensure that our customers are completely satisfied when making a purchase and are open to custom orders.  We look forward to hearing from you and being  part of your special day!  
+
+      %blockquote If your question pertains to a specific product, please include it in the subject.
+      =link_to "Contact us on Etsy", Shop.instance.url, target: "_blank", class: "btn"
+      =mail_to 'heidi@bohokitty.com', 'Send us an email', class: "btn", subject: "re: BohoKitty"

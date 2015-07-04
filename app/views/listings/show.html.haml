@@ -1,0 +1,26 @@
+.page-wrapper
+  .container.page-container
+    .page-image
+      %ul
+        %li.slider-card
+          .slider
+            %ol.dots
+              -@listing.images.each do |dot|
+                %li.dot
+            %a.prev{ href: "javascript:void(0)" }
+            %a.next{ href: "javascript:void(0)" }
+            %ul
+              -@listing.images.each do |image_url|
+                %li
+                  %img{src: image_url.full}
+    .page-content
+      %h3= @listing.nice_title
+      %hr
+      =@listing.description.html_safe
+      %blockquote
+        PLEASE NOTE ALL OUR PRODUCTS ARE LISTED IN $USD - For international orders, please visit our shop on etsy here: Boho Kitty Bridal
+      %h3= "$#{@listing.price}"
+      =link_to "Buy on Etsy", @listing.url, target: "_blank", class: "btn"
+      =mail_to 'heidi@bohokitty.com', 'ask a question', class: "btn", subject: "re: #{@listing.title}"
+.container.listing-details
+  =Shop.instance.policy_refunds

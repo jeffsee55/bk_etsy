@@ -1,0 +1,78 @@
+body {
+  background-color: $light-gray;
+  color: $medium-gray;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
+.container {
+  @include outer-container;
+  padding: 0 0.5em;
+
+  @include media(min-width $large-screen) {
+    padding: 0;
+  }
+}
+
+blockquote {
+  border-left: 5px solid transparentize($medium-gray, 0.4);
+  padding-left: 20px;
+  margin-left: 0;
+}
+
+.btn {
+  @extend button
+}
+
+.btn-horizontal {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+hr {
+  border-bottom: 2px solid #898888;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"], button {
+  background-color: transparent;
+  border-radius: 1px;
+  border: 1px solid transparentize($medium-gray, 0.6);
+  color: $medium-gray;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: 300;
+
+  &:hover {
+    background: transparentize($medium-gray, 0.8);
+    color: $medium-gray;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 15;
+  @include background(radial-gradient(transparentize(white, 1), transparentize(#333, 0.2)));
+
+  &:hover {
+    @include background(radial-gradient(transparentize(white, 1), transparentize(#333, 0.3)));
+  }
+}

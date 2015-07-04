@@ -1,0 +1,15 @@
+- section_hero = "bk-#{@section.title.downcase}-collection.jpg"
+.page-hero{style: "background: url(#{asset_path(section_hero)}) center 60%"}
+
+.page-wrapper
+  .container.page-container
+    %h3= @section.title
+    %hr
+    .listings
+      -@section.listings.each do |listing|
+        =link_to listing_path(listing.id), class: "listing" do
+          %img{src: listing.image.thumbnail}
+          .overlay
+            .listing-content
+              %h3= listing.nice_title
+              %h5= listing.price

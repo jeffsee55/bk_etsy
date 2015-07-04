@@ -1,0 +1,29 @@
+.home-hero
+  .home-slider
+    .slider
+      %ol.dots
+        -2.times do |dot|
+          %li.dot
+      %a.prev{ href: "javascript:void(0)" }
+      %a.next{ href: "javascript:void(0)" }
+      %ul
+        - i = 0
+        - 2.times do |slide|
+          - i += 1
+          - slide = "slideshow/slide-#{i}.jpg"
+          %li{style: "background-image: url(#{asset_path(slide)})"}
+  .hero-content
+    %h3 FOR THE GIRL WITH A FREE SPIRIT AND A LITTLE SASS
+
+.container
+  .home-sections
+    - if @sections.respond_to? 'each'
+      - @sections.each do |section|
+        -if section.listings.respond_to?('first')
+          - section_image_url = section.listings.first.image.thumbnail
+        =link_to section_path(section.id), style: "background-image: url(#{section_image_url})", class: "section" do
+          %h3=section.title
+    -else
+      =link_to section_path(@sections.id), class: "section" do
+        %h3=@sections.title
+

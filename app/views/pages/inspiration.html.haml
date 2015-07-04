@@ -1,0 +1,10 @@
+.page-wrapper
+  .container.page-container
+    %h3 Inspiration
+    %hr
+    .listings
+      -@instagram_recent.each do |media|
+        =link_to "#", class: "listing instagram-listing" do
+          %img{src: media.images.standard_resolution.url}
+          .overlay
+            .listing-content

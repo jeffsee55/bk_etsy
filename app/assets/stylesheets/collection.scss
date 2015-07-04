@@ -1,0 +1,54 @@
+.page-container{
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+
+  .listings {
+    @include row;
+
+    .listing {
+      @include span-columns(12);
+      background: $medium-gray;
+      margin-bottom: 1em;
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &:hover {
+        .overlay {
+          visibility: visible;
+        }
+      }
+
+      @include media(min-width $medium-screen) {
+        @include span-columns(4);
+        &:nth-child(3n) {
+          @include omega;
+        }
+      }
+
+      .overlay {
+        visibility: hidden;
+        @include transition(all 0.2s ease-in-out);
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background: transparentize(#fff, 0.4);
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+
+        .listing-content {
+          max-width: 90%;
+          h3, h5 {
+            text-align: center;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-container a.listing.instagram-listing {
+  min-height: 0;
+  background: none;
+}

@@ -1,0 +1,48 @@
+body {
+  background-color: $light-gray;
+  color: $medium-gray;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+}
+
+.container {
+  @include outer-container;
+}
+
+blockquote {
+  border-left: 5px solid transparentize($medium-gray, 0.4);
+  padding-left: 20px;
+  margin-left: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+hr {
+  border-bottom: 2px solid $dark-gray
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"], button {
+  background-color: transparent;
+  border-radius: 1px;
+  border: 1px solid;
+  color: $medium-gray;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.75em 1em;
+  text-decoration: none;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover {
+    background: transparentize($medium-gray, 0.8);
+    color: $medium-gray;
+  }
+}

@@ -1,0 +1,41 @@
+.page-hero {
+  @include background(url("http://placehold.it/1200x500&text=Page%20Image"));
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+
+  @include media(min-width $medium-screen) {
+    min-height: 500px;
+  }
+}
+.page-wrapper {
+  background: $sand;
+}
+.container.page-container {
+  margin-bottom: 2em;
+
+  h3, h5 {
+    font-weight: 300;
+  }
+  h3 {
+    font-size: 2em;
+  }
+  h5 {
+    font-size: 1.3em;
+  }
+}
+.page-content, .page-image {
+  @include media(min-width $medium-screen) {
+    @include span-columns(6);
+    padding: 1em;
+  }
+  padding: 0.5em;
+}
+
+.page-content {
+  overflow: hidden;
+
+  button, input[type="submit"] {
+    @extend .btn-horizontal
+  }
+}

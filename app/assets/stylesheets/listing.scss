@@ -1,0 +1,11 @@
+.listing-details {
+  border: 1px solid;
+  padding: 1em;
+
+  @include media(min-width $medium-screen) {
+    @include display(flex);
+    @include justify-content(center);
+    width: 60%;
+    margin-bottom: 2em;
+  }
+}
