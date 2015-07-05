@@ -1,5 +1,9 @@
 - section_hero = "bk-#{@section.title.downcase}-collection.jpg"
-.page-hero{style: "background: url(#{asset_path(section_hero)}) center 60%"}
+- if @section.title.downcase == 'bridal'
+  - y_position = '60%'
+-else
+  - y_position = '20%'
+.page-hero{style: "background: url(#{asset_path(section_hero)}) center #{y_position}"}
 
 .page-wrapper
   .container.page-container

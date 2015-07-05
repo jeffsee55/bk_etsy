@@ -3,6 +3,7 @@ class Listing < Etsy::Listing
     title[/[^-]+/]
   end
 
+
   def self.find_all_by_section(section)
     Listing.get("/shops/#{Shop.instance.id}/sections/#{section.id}/listings")
   end
