@@ -7,8 +7,7 @@
     %hr
     .listings
       -@section.listings.each do |listing|
-        =link_to listing_path(listing.id), class: "listing" do
-          %img{src: listing.image.thumbnail}
+        =link_to listing_path(listing.id), class: "listing", style: "background-image: url(#{listing.image.thumbnail})" do
           .overlay
             .listing-content
               %h3= listing.nice_title

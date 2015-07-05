@@ -2,13 +2,13 @@
   .home-slider
     .slider
       %ol.dots
-        -2.times do |dot|
+        -4.times do |dot|
           %li.dot
       %a.prev{ href: "javascript:void(0)" }
       %a.next{ href: "javascript:void(0)" }
       %ul
         - i = 0
-        - 2.times do |slide|
+        - 4.times do |slide|
           - i += 1
           - slide = "slideshow/slide-#{i}.jpg"
           %li{style: "background-image: url(#{asset_path(slide)})"}

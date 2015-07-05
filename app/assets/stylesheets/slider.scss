@@ -5,9 +5,8 @@
 
 ol.dots {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   z-index: 50;
   @include display(flex);
   @include justify-content(center);
@@ -21,7 +20,8 @@ ol.dots {
     margin: 3px;
   }
   li.active {
-    background: $medium-gray;
+    background: transparent;
+    border: 1px solid white;
   }
 }
 

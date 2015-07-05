@@ -11,7 +11,9 @@
       margin-bottom: 1em;
       position: relative;
       background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
+      height: 300px;
 
       &:hover {
         .overlay {
