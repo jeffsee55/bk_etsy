@@ -10,7 +10,7 @@ gem "delayed_job_active_record"
 gem "email_validator"
 gem "flutie"
 gem "high_voltage"
-gem "i18n-tasks"
+# gem "i18n-tasks"
 gem "jquery-rails"
 gem "neat", "~> 1.7.0"
 gem "newrelic_rpm", ">= 3.9.8"
@@ -31,6 +31,13 @@ gem "haml-rails", "~> 0.9"
 gem 'instagram'
 gem 'actionpack-action_caching'
 gem "nokogiri"
+
+gem 'capistrano', '~> 3.1.0'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rails', '~> 1.1.1'
+
+# Add this if you're using rbenv
+gem 'capistrano-rbenv', github: "capistrano/rbenv"
 
 group :development do
   gem "spring"

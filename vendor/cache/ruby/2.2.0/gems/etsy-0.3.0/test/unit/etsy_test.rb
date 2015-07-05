@@ -1,0 +1,173 @@
+require File.expand_path('../../test_helper', __FILE__)
+
+class EtsyTest < Test::Unit::TestCase
+
+  context "The Etsy module" do
+    setup do
+      Etsy.instance_variable_set(:@protocol, nil)
+      Etsy.instance_variable_set(:@environment, nil)
+      Etsy.instance_variable_set(:@access_mode, nil)
+      Etsy.instance_variable_set(:@callback_url, nil)
+      Etsy.instance_variable_set(:@host, nil)
+      Etsy.instance_variable_set(:@api_key, nil)
+      Etsy.instance_variable_set(:@api_secret, nil)
+      Etsy.instance_variable_set(:@permission_scopes, nil)
+      Etsy.instance_variable_set(:@silent_errors, nil)
+    end
+
+    should "be able to set and retrieve the API key" do
+      Etsy.api_key = 'key'
+      Etsy.api_key.should == 'key'
+    end
+
+    should "be able to set and retrieve the API key across threads (global)" do
+      Etsy.api_key = 'key'
+      Thread.new do
+        Etsy.api_key.should == 'key'
+      end.join
+    end
+
+    should "be able to set and retrieve the API key inside a thread (thread local)" do
+      Etsy.api_key = 'key'
+      Thread.new do
+        Etsy.api_key = 'thread_local_key'
+        Etsy.api_key.should == 'thread_local_key'
+      end.join
+    end
+
+    should "be able to set and retrieve the API secret" do
+      Etsy.api_secret = 'secret'
+      Etsy.api_secret.should == 'secret'
+    end
+
+    should "be able to set and retrieve the API secret across threads (global)" do
+      Etsy.api_secret = 'secret'
+      Thread.new do
+        Etsy.api_secret.should == 'secret'
+      end.join
+    end
+
+    should "be able to set and retrieve the API secret inside a thread (thread local)" do
+      Etsy.api_secret = 'secret'
+      Thread.new do
+        Etsy.api_secret = 'thread_local_secret'
+        Etsy.api_secret.should == 'thread_local_secret'
+      end.join
+    end
+
+    should "be able to find a user by username" do
+      user = stub()
+
+      Etsy::User.expects(:find).with('littletjane').returns(user)
+      Etsy.user('littletjane').should == user
+    end
+
+    should "use the https protocol by default" do
+      Etsy.protocol.should == "https"
+    end
+
+    should "be able to set the protocol to a valid value" do
+      Etsy.protocol = 'http'
+      Etsy.protocol.should == 'http'
+    end
+
+    should "raise an exception when attempting to set an invalid protocol" do
+      lambda { Etsy.protocol = :invalid }.should raise_error(ArgumentError)
+    end
+
+    should "use silent errors by default" do
+      Etsy.silent_errors.should == true
+    end
+
+    should "be able to set silent errors to a valid value" do
+      Etsy.silent_errors = false
+      Etsy.silent_errors.should == false
+    end
+
+    should "raise an exception when attempting to set an invalid silent errors value" do
+      lambda { Etsy.silent_errors = :invalid }.should raise_error(ArgumentError)
+    end
+
+    should "use the production environment by default" do
+      Etsy.environment.should == :production
+    end
+
+    should "be able to set the environment to a valid value" do
+      Etsy.environment = :sandbox
+      Etsy.environment.should == :sandbox
+    end
+
+    should "raise an exception when attempting to set an invalid environment" do
+      lambda { Etsy.environment = :invalid }.should raise_error(ArgumentError)
+    end
+
+    should "know the host for the sandbox environment" do
+      Etsy.environment = :sandbox
+      Etsy.host.should == 'sandbox.openapi.etsy.com'
+    end
+
+    should "know the host for the production environment" do
+      Etsy.environment = :production
+      Etsy.host.should == 'openapi.etsy.com'
+    end
+
+    should "default to production host" do
+      Etsy.host.should == 'openapi.etsy.com'
+    end
+
+    should "be able to set the callback url" do
+      Etsy.callback_url = 'http://localhost'
+      Etsy.callback_url.should == 'http://localhost'
+    end
+
+    should "default callback to out-of-band" do
+      Etsy.callback_url.should == 'oob'
+    end
+
+    should "default permission scopes to an empty array" do
+      Etsy.permission_scopes.should == []
+    end
+
+    should "be able to set the scopes" do
+      Etsy.permission_scopes = %w(a_scope another_scope)
+      Etsy.permission_scopes.should == ['a_scope', 'another_scope']
+    end
+  end
+
+  context "The Etsy module when set up properly" do
+    setup do
+      Etsy.instance_variable_set(:@protocol, 'https')
+      Etsy.instance_variable_set(:@environment, :sandbox)
+      Etsy.instance_variable_set(:@access_mode, :read_write)
+      Etsy.instance_variable_set(:@api_key, 'key')
+      Etsy.instance_variable_set(:@api_secret, 'secret')
+      Etsy.instance_variable_set(:@verification_request, nil)
+    end
+
+    should "provide a request token" do
+      request = stub(:request_token => 'token')
+      Etsy::VerificationRequest.stubs(:new).returns(request)
+
+      Etsy.request_token.should == 'token'
+    end
+
+    should "be able to generate an access token" do
+      Etsy::SecureClient.stubs(:new).with({
+        :request_token  => 'toke',
+        :request_secret => 'secret',
+        :verifier       => 'verifier'
+      }).returns(stub(:client => 'token'))
+
+      Etsy.access_token('toke', 'secret', 'verifier').should == 'token'
+    end
+
+    should "provide a verification URL" do
+      request = stub(:url => 'url')
+      Etsy::VerificationRequest.stubs(:new).returns(request)
+
+      Etsy.verification_url.should == 'url'
+    end
+
+  end
+
+end
