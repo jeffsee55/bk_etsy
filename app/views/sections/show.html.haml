@@ -7,13 +7,12 @@
 
 .page-wrapper
   .container.page-container
-    -cache do
-      %h3= @section.title
-      %hr
-      .listings
-        -@section.listings.each do |listing|
-          =link_to listing_path(listing.id), class: "listing", style: "background-image: url(#{listing.image.thumbnail})" do
-            .overlay
-              .listing-content
-                %h3= listing.nice_title
-                %h5= listing.price
+    %h3= @section.title
+    %hr
+    .listings
+      -@section.listings.each do |listing|
+        =link_to listing_path(listing.id), class: "listing", style: "background-image: url(#{listing.image.thumbnail})" do
+          .overlay
+            .listing-content
+              %h3= listing.nice_title
+              %h5= listing.price
