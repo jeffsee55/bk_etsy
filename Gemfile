@@ -31,6 +31,7 @@ gem "haml-rails", "~> 0.9"
 gem 'instagram'
 gem 'actionpack-action_caching'
 gem "nokogiri"
+gem "dotenv-rails"
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
@@ -49,7 +50,6 @@ group :development, :test do
   gem "awesome_print"
   gem "bundler-audit", require: false
   gem "byebug"
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.1.0"
