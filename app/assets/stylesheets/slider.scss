@@ -1,67 +1,89 @@
-.slider-card{
-  overflow: hidden;
-  position: relative;
-}
-
-ol.dots {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 50;
-  @include display(flex);
-  @include justify-content(center);
-
-  li.dot {
-    float: left;
-    background: white;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    margin: 3px;
-  }
-  li.active {
-    background: transparent;
-    border: 1px solid white;
-  }
-}
-
-.slider{
-  background: darken($light-gray, 10);
-
-  .next, .prev {
-    position: absolute;
-    width: 20%;
-    top: 0;
-    bottom: 0;
-    z-index: 10;
-    @include align-items(center);
-    @include justify-content(center);
-  }
-  .next {
-    left: null;
-    right: 0
-  }
-  .prev {
-    left: 0;
-    right: null;
+ul.slider {
+  li.slick-slide {
+    background-position: center 20%;
+    background-size: cover;
   }
 
-  ul {
-    /*min-height: 250px;*/
-    position: relative;
+  ul.slick-dots {
+    @include clearfix();
+    bottom: 35px;
+    margin: 0 auto;
+    z-index: 100;
 
     li {
-      display: inline-block;
-      float: left;
+      float: none;
+      height: 20px;
     }
   }
 }
 
-a.display-flex {
-  @include display(flex);
+.slick-dots li button:before, .slick-dots li .btn:before {
+  opacity: 0.50;
+  font-size: 10px;
+  color: white;
 }
-a.display-none {
-  display: none;
+.slick-dots li.slick-active button:before, .slick-dots li.slick-active .btn:before {
+  opacity: 0.8;
+  color: white;
 }
 
+.slick-prev, .slick-next {
+  z-index: 100;
+  visibility: hidden;
+  @include media(min-width $medium-screen) {
+    visibility: visible;
+  }
+}
 
+.slick-prev {
+  left: 30px;
+}
+
+.slick-next {
+  right: 30px;
+}
+
+.slick-prev:before {
+  content: "";
+  height: 200px;
+  width: 20px;
+  display: block;
+  background-image: url("../assets/chevron-left.png");
+  background-size: 20px 60px;
+  background-repeat: no-repeat;
+}
+.slick-next:before {
+  content: "";
+  height: 200px;
+  width: 20px;
+  display: block;
+  background-image: url("../assets/chevron-right.png");
+  background-size: 20px 60px;
+  background-repeat: no-repeat;
+}
+.slick-dots li a:before {
+}
+
+.pages-home {
+  ul.slider {
+    li.slick-slide {
+      height: $hero-height;
+    }
+  }
+}
+
+.page-image {
+  ul.slider {
+
+    div.slick-track {
+      li {
+        height: 500px;
+        background-position: center;
+      }
+    }
+
+    ul.slick-dots {
+      bottom: 5px;
+    }
+  }
+}

@@ -1,18 +1,21 @@
 .page-wrapper
   .container.page-container
     .page-image
-      %ul
-        %li.slider-card
-          .slider
-            %ol.dots
-              -@listing.images.each do |dot|
-                %li.dot
-            %a.prev{ href: "javascript:void(0)" }
-            %a.next{ href: "javascript:void(0)" }
-            %ul
-              -@listing.images.each do |image_url|
-                %li
-                  %img{src: image_url.full}
+      %ul.slider
+        -@listing.images.each do |image_url|
+          %li{style: "background-image: url(#{image_url.full})"}
+      -#%ul
+        -#%li.slider-card
+          -#.slider
+            -#%ol.dots
+              -#-@listing.images.each do |dot|
+                -#%li.dot
+            -#%a.prev{ href: "javascript:void(0)" }
+            -#%a.next{ href: "javascript:void(0)" }
+            -#%ul
+              -#-@listing.images.each do |image_url|
+                -#%li
+                  -#%img{src: image_url.full}
     .page-content
       %h3= @listing.nice_title
       %hr

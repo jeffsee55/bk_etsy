@@ -1,17 +1,11 @@
 .home-hero
   .home-slider
-    .slider
-      %ol.dots
-        -4.times do |dot|
-          %li.dot
-      %a.prev{ href: "javascript:void(0)" }
-      %a.next{ href: "javascript:void(0)" }
-      %ul
-        - i = 0
-        - 4.times do |slide|
-          - i += 1
-          - slide = "slideshow/slide-#{i}.jpg"
-          %li{style: "background-image: url(#{asset_path(slide)})"}
+    %ul.slider
+      - i = 0
+      - 4.times do |slide|
+        - i += 1
+        - slide = "slideshow/slide-#{i}.jpg"
+        %li{style: "background-image: url(#{asset_path(slide)})"}
   .hero-content
     %h3 FOR THE GIRL WITH A FREE SPIRIT AND A LITTLE SASS
 

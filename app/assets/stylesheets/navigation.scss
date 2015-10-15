@@ -113,7 +113,7 @@ header.navigation {
     }
 
     @include media ($horizontal-bar-mode) {
-      display: inline;
+      display: block;
       margin: 0;
       padding: 0;
     }
@@ -182,6 +182,7 @@ header.navigation {
 
     > a {
       padding-right: 0.6em;
+      position: relative;
     }
 
     > a:after {
@@ -201,7 +202,7 @@ header.navigation {
 
     > a {
       padding-right: 1.6em;
-      position: relative;
+      // position: relative;
 
       @include media($horizontal-bar-mode) {
         margin-right: $navigation-submenu-padding;
@@ -223,6 +224,7 @@ header.navigation {
     @include media($horizontal-bar-mode) {
       padding-right: 0.8em;
       position: relative;
+      z-index: 1000;
     }
   }
 

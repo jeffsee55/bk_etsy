@@ -7,6 +7,7 @@
 
     .listing {
       @include span-columns(12);
+      @include filter(grayscale(1));
       background: $medium-gray;
       margin-bottom: 1em;
       position: relative;
@@ -54,4 +55,5 @@
 .page-container a.listing.instagram-listing {
   min-height: 0;
   background: none;
+  @include filter(grayscale(0));
 }

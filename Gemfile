@@ -25,6 +25,7 @@ gem "simple_form"
 gem "title"
 gem "uglifier"
 gem "unicorn"
+gem 'slick_rails'
 
 gem "etsy"
 gem "haml-rails", "~> 0.9"

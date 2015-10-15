@@ -2,7 +2,6 @@
   @include display(flex);
   @include justify-content(center);
   @include align-items(flex-end);
-  $hero-height: 80vh;
   height: $hero-height;
   background: $medium-gray;
   padding: 0 0.5em;
@@ -16,12 +15,15 @@
     
     h3 {
       font-size: 2.5em;
+      text-align: center;
 
       @include media(min-width $medium-screen) {
         font-size: 3.5em;
+        text-align: center;
       }
       @include media(min-width $large-screen) {
         font-size: 4em;
+        text-align: left;
       }
     }
   }
