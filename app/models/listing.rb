@@ -1,6 +1,6 @@
 class Listing < Etsy::Listing
   def nice_title
-    title[/[^-]+/]
+    title[/[^-]+/] if title.present?
   end
 
 

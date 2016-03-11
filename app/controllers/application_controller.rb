@@ -4,8 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :menu_sections
+  helper_method :shop_instance
+
+  def shop_instance
+    @shop_instance ||= Shop.instance
+  end
 
   def menu_sections
-    Section.find_by_shop(Shop.instance)
+    @menu_sections ||= Section.find_by_shop(shop_instance)
   end
 end

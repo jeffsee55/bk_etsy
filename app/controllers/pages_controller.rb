@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @sections = Section.find_by_shop(Shop.instance)
+    @sections = Section.find_by_shop(shop_instance)
   end
 
   def about

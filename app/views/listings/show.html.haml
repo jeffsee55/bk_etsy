@@ -4,18 +4,6 @@
       %ul.slider
         -@listing.images.each do |image_url|
           %li{style: "background-image: url(#{image_url.full})"}
-      -#%ul
-        -#%li.slider-card
-          -#.slider
-            -#%ol.dots
-              -#-@listing.images.each do |dot|
-                -#%li.dot
-            -#%a.prev{ href: "javascript:void(0)" }
-            -#%a.next{ href: "javascript:void(0)" }
-            -#%ul
-              -#-@listing.images.each do |image_url|
-                -#%li
-                  -#%img{src: image_url.full}
     .page-content
       %h3= @listing.nice_title
       %hr
@@ -26,4 +14,4 @@
       =link_to "Buy on Etsy", @listing.url, target: "_blank", class: "btn"
       =mail_to 'heidi@bohokitty.com', 'ask a question', class: "btn", subject: "re: #{@listing.title}"
 .container.listing-details
-  =Shop.instance.policy_refunds
+  = shop_instance.policy_refunds

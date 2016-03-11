@@ -12,6 +12,7 @@
   %body{:class => body_class}
     = render "flashes"
     = render "nav"
-    = yield
+    - cache do
+      = yield
     = render "footer"
     = render "javascript"

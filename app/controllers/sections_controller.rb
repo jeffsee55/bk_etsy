@@ -1,5 +1,5 @@
 class SectionsController < ApplicationController
   def show
-    @section = Section.find(Shop.instance, params[:id])
+    @section = Section.find(shop_instance, params[:id])
   end
 end
